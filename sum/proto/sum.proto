@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package sum;
+
+option go_package = "github.com/ben-c-bestow/grpc-course/sum/proto";
+
+message SumRequest {
+    int32 addend_1 = 1;
+    int32 addend_2 = 2;
+}
+
+message SumResponse {
+    int32 sum = 1;
+}
+
+service SumService {
+    rpc Sum (SumRequest) returns (SumResponse);
+}

@@ -37,14 +37,15 @@ else
 endif
 
 .DEFAULT_GOAL := help
-.PHONY: greet blog calculator help
-project := greet calculator blog
+.PHONY: greet sum blog calculator help
+project := greet sum calculator blog
 
 all: $(project) ## Generate Pbs and build
 
 greet: $@ ## Generate Pbs and build for greet
 calculator: $@ ## Generate Pbs and build for calculator
 blog: $@ ## Generate Pbs and build for blog
+sum: $@
 
 $(project):
 	@${CHECK_DIR_CMD}
@@ -70,6 +71,9 @@ clean_calculator: ## Clean generated files for calculator
 	
 clean_blog: ## Clean generated files for blog
 	${RM_F_CMD} blog/${PROTO_DIR}/*.pb.go
+
+clean_sum: ## Clean generated files for blog
+	${RM_F_CMD} sum/${PROTO_DIR}/*.pb.go
 
 rebuild: clean all ## Rebuild the whole project
 
